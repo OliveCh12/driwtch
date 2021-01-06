@@ -2,6 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://olivech12.github.io/driwtch",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -17,6 +18,7 @@
     "autoprefixer": "10.x",
     "cross-env": "7.x",
     "framer-motion": "^3.1.4",
+    "gh-pages": "^3.1.0",
     "npm-run-all": "4.x",
     "postcss": "8.x",
     "postcss-cli": "8.x",
@@ -30,6 +32,8 @@
     "typescript": "4.x"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "run-p watch:css react-scripts:start",
     "build": "run-s build:css react-scripts:build",
     "test": "react-scripts test",
