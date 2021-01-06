@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   children: React.ReactNode;
@@ -7,14 +8,15 @@ interface Props {
 
 const Button = (props: Props) => {
   return (
-    <button
-      className="bg-black text-white rounded active:bg-teal-600 text-bold px-8 py-3  hover:bg-primary-400 outline-none focus:outline-none mr-1 mb-1"
+    <motion.button
+      className="h-12 w-12 rounded-full hover:bg-red-500 focus:bg-red-900 bg-gray-700 border border-gray-600 text-white"
       style={{ transition: "all .15s ease" }}
       type="button"
+      whileTap={{ scale: 1.2 }}
       onClick={props.onClick}
     >
       {props.children}
-    </button>
+    </motion.button>
   );
 };
 

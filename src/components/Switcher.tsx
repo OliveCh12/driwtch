@@ -4,6 +4,15 @@ import { GlobalContext } from "../GlobalContext";
 
 import Countdown from "react-countdown";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowCircleLeft,
+  faArrowCircleRight,
+  faStopwatch,
+} from "@fortawesome/free-solid-svg-icons";
+
+import { AnimatePresence, motion } from "framer-motion";
+
 import Progress from "./Progress";
 import Button from "./Button";
 
@@ -45,7 +54,8 @@ const Switcher = (props: SwitcherType) => {
       return "Next";
     } else {
       return (
-        <span className="text-2xl text-white font-bold bg-red-500 px-9 py-2 rounded-full">
+        <span className="text-lg text-white font-bold bg-gray-900 px-9 py-2 rounded-full">
+          <FontAwesomeIcon icon={faStopwatch} />
           {minutes === 0 ? "" : minutes + " min"}{" "}
           {seconds === 0 ? "" : seconds + " s"}
         </span>
@@ -56,43 +66,56 @@ const Switcher = (props: SwitcherType) => {
   const progress = ({ total, completed, api }: Props) => {
     if (completed) {
       api.start();
-    } else {
-      return <Progress current={(total * 100) / props.duration} />;
+      return "Next";
     }
+    return <Progress current={(total * 100) / props.duration} />;
   };
 
   return (
-    <div className="bg-indigo-400 h-full relative">
-      <div className="flex justify-center">
-        <img
-          className="rounded-xl max-w-lg h-60 object-cover"
-          // height="auto"
+    <div className=" flex-grow h-36 relative bg-gradient-to-t from-gray-900 to-gray-800">
+      <AnimatePresence>
+        <motion.img
+          className="w-full h-full object-contain"
+          key={state[currentIndex]}
           src={state[currentIndex]}
           alt="Sketch image"
+          initial={{ opacity: 0, x: 300, overflow: "hidden" }}
+          animate={{ opacity: 1, x: 0, overflow: "hidden" }}
+          exit={{ opacity: 0, x: -300, overflow: "hidden" }}
+          transition={{ type: "tween" }}
         />
-      </div>
+      </AnimatePresence>
 
-      <div className="bg-gray-500 w-full flex justify-center">
-        <div className="bg-white h-32 border border-gray-200 rounded-xl max-w-xl">
-          <div className="flex justify-between  items-center p-5 ">
-            <Button onClick={handlePrevious}>Previous</Button>
-            <div className="flex flex-col items-center">
-              <span className="mb-1 ">
-                <strong>{currentIndex}</strong> / {state.length}
+      <div className=" w-full flex justify-center mt-5 absolute bottom-5">
+        <div className="container mx-auto px-4">
+          <div className="bg-white bg-opacity-90 h-36 max-w-lg mx-auto border border-gray-200 rounded-xl w-xl dark:bg-gray-800 dark:border-gray-600 shadow-xl">
+            <div className="bg-dark-darkest border-b border-gray-600 rounded-t-xl h-8 flex justify-center items-center">
+              <span className="mb-1 dark:text-white text-xs">
+                <strong className="text-red-500">{currentIndex}</strong> /{" "}
+                {state.length}
               </span>
-              <Countdown
-                date={Date.now() + props.duration}
-                renderer={renderer}
-                autoStart={true}
-              />
             </div>
-            <Button onClick={handleNext}>Next</Button>
+            <div className="flex justify-between  items-center p-5 ">
+              <Button onClick={handlePrevious}>
+                <FontAwesomeIcon icon={faArrowCircleLeft} />
+              </Button>
+              <div className="flex flex-col items-center">
+                <Countdown
+                  date={Date.now() + props.duration}
+                  renderer={renderer}
+                  autoStart={true}
+                />
+              </div>
+              <Button onClick={handleNext}>
+                <FontAwesomeIcon icon={faArrowCircleRight} />
+              </Button>
+            </div>
+            <Countdown
+              date={Date.now() + props.duration}
+              renderer={progress}
+              autoStart={true}
+            />
           </div>
-          <Countdown
-            date={Date.now() + props.duration}
-            renderer={progress}
-            autoStart={true}
-          />
         </div>
       </div>
     </div>
