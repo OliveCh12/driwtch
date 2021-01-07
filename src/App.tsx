@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, HashRouter } from "react-router-dom";
 
 import { GlobalProvider } from "./GlobalContext";
 
@@ -12,14 +12,14 @@ function App() {
     <GlobalProvider>
       <div className="h-screen dark:bg-dark">
         <HashRouter basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/:query/:duration">
-              <Starter />
-            </Route>
-          </Switch>
+          <Route
+            render={({ location }) => (
+              <Switch location={location}>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/:query/:duration" component={Starter} />
+              </Switch>
+            )}
+          />
         </HashRouter>
       </div>
     </GlobalProvider>
