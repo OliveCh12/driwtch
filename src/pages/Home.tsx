@@ -43,6 +43,7 @@ const Home = () => {
             value={state.query}
             onChange={handleInputChange}
             placeholder="I want to draw..."
+            autoComplete="off"
           />
           <select
             className="bg-white dark:bg-gray-700 dark:text-white shadow rounded p-3 ml-3"
