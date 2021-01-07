@@ -11,7 +11,8 @@ function App() {
   return (
     <GlobalProvider>
       <div className="h-screen dark:bg-dark">
-        <HashRouter basename={process.env.PUBLIC_URL}>
+        <h1>This is simple app : Driwtch</h1>
+        {/* <HashRouter basename={process.env.PUBLIC_URL}>
           <Route
             render={({ location }) => (
               <Switch location={location}>
@@ -20,7 +21,7 @@ function App() {
               </Switch>
             )}
           />
-        </HashRouter>
+        </HashRouter> */}
       </div>
     </GlobalProvider>
   );
