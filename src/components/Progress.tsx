@@ -11,7 +11,7 @@ const Progress = (props: Props) => {
       <motion.div
         animate={{ width: `${props.current}%` }}
         transition={{ type: "tween" }}
-        className="transition duration-500 ease-in-out bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 h-1 rounded-full"
+        className="transition duration-500 ease-in-out bg-gradient-to-r from-purple-400  to-purple-600 h-1 rounded-full"
       ></motion.div>
     </div>
   );

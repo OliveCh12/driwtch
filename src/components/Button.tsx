@@ -9,7 +9,7 @@ interface Props {
 const Button = (props: Props) => {
   return (
     <motion.button
-      className="h-12 w-12 rounded-full hover:bg-red-500 focus:bg-red-900 bg-gray-700 border border-gray-600 text-white"
+      className="h-12 w-12 rounded-full hover:bg-purple-500 focus:bg-purple-700 bg-gray-700 border border-gray-600 text-white"
       style={{ transition: "all .15s ease" }}
       type="button"
       whileTap={{ scale: 1.2 }}

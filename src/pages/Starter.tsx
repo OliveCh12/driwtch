@@ -44,7 +44,7 @@ const Starter = (props: Props) => {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
     return (
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen bg-gray-800">
         <Header query={query} />
         <div className="flex flex-col justify-center items-center flex-grow">
           <motion.div
@@ -54,12 +54,16 @@ const Starter = (props: Props) => {
             }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            <FontAwesomeIcon className="text-red-500" icon={faFan} size="5x" />
+            <FontAwesomeIcon
+              className="text-purple-500"
+              icon={faFan}
+              size="5x"
+            />
           </motion.div>
 
-          <span className="text-center text-xl font-bold dark:text-white">
-            Un moment s'il te plait, je recherche des images de{" "}
-            <strong className="capitalize text-red-600">{query}</strong>
+          <span className="text-center text-xl font-bold dark:text-white mt-8">
+            Un moment s'il te plait, je recherche des images de : <br />
+            <strong className="text-purple-600 mt-5">« {query} »</strong>
           </span>
         </div>
         <Footer />

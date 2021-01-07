@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import Search from "../components/Search";
-import Timer from "../components/Timer";
 
 import { Link } from "react-router-dom";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+import { motion } from "framer-motion";
 
 const Home = () => {
   const [state, setState] = useState({
@@ -16,50 +19,58 @@ const Home = () => {
   }
 
   return (
-    <div className=" h-60 flex flex-col justify-center items-center">
-      <div className="container m-auto px-5 text-center">
-        <h1 className="font-cursive text-6xl text-primary-500">Driwtch</h1>
-        <p className="dark:text-gray-300 mt-2 text-lg text-gray-500">
+    <div className="bg-gray-100 dark:bg-gray-800  h-full flex flex-col justify-center items-center">
+      <Header />
+
+      <div className="container m-auto px-5 mt-5 h-full flex flex-col justify-center items-center">
+        <motion.h1
+          initial={{ y: 100, scale: 3, opacity: 0 }}
+          animate={{ y: 0, scale: 1, opacity: 1 }}
+          transition={{ duration: 0.7 }}
+          className="font-cursive text-6xl text-primary-500"
+        >
+          Driwtch
+        </motion.h1>
+        <p className="dark:text-gray-300 text-xl text-gray-500 mb-5">
           Sketch as fast as you can...
         </p>
-      </div>
-
-      <div className="container m-auto px-5 mt-5">
-        <input
-          className=""
-          type="text"
-          name="query"
-          value={state.query}
-          onChange={handleInputChange}
-          placeholder="I want to draw..."
-        />
-        <select
-          name="interval"
-          value={state.interval}
-          onChange={handleInputChange}
-        >
-          <option value={30000}>30 seconds</option>
-          <option value={60000}>1 minute</option>
-          <option value={90000}>1 minute 30</option>
-          <option value={120000}>2 minutes</option>
-          <option value={150000}>2 minutes 30</option>
-          <option value={150000}>3 minutes</option>
-          <option value={210000}>3 minutes 30</option>
-          <option value={240000}>4 minutes</option>
-          <option value={270000}>4 minutes 30</option>
-          <option value={300000}>5 minutes</option>
-        </select>
+        <div className="flex">
+          <input
+            className="bg-white dark:bg-gray-700 dark:text-white shadow rounded border-0 p-3"
+            type="text"
+            name="query"
+            value={state.query}
+            onChange={handleInputChange}
+            placeholder="I want to draw..."
+          />
+          <select
+            className="bg-white dark:bg-gray-700 dark:text-white shadow rounded p-3 ml-3"
+            name="interval"
+            value={state.interval}
+            onChange={handleInputChange}
+          >
+            <option value={30000}>30 seconds</option>
+            <option value={60000}>1 minute</option>
+            <option value={90000}>1 minute 30</option>
+            <option value={120000}>2 minutes</option>
+            <option value={150000}>2 minutes 30</option>
+            <option value={150000}>3 minutes</option>
+            <option value={210000}>3 minutes 30</option>
+            <option value={240000}>4 minutes</option>
+            <option value={270000}>4 minutes 30</option>
+            <option value={300000}>5 minutes</option>
+          </select>
+        </div>
 
         <Link
           type="submit"
-          className="px-5 py-3 rounded-full bg-red-500"
+          className="border border-purple-600 text-white px-10 py-3 rounded-lg bg-purple-500 hover:bg-purple-600 focus:bg-purple-700 shadow-xl mt-5"
           to={`/${state.query}/${state.interval}`}
         >
-          Start
+          Start session
         </Link>
-        {/* <Search />
-        <Timer /> */}
       </div>
+      <Footer />
     </div>
   );
 };
