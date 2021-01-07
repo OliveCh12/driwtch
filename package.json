@@ -2,7 +2,7 @@
   "name": "driwtch",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://olivech12.github.io/driwtch",
+  "homepage": "https://driwtch.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
