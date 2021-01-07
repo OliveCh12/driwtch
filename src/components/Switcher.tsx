@@ -54,8 +54,8 @@ const Switcher = (props: SwitcherType) => {
       return "Next";
     } else {
       return (
-        <span className="text-lg text-white font-bold bg-gray-900 px-9 py-2 rounded-full">
-          <FontAwesomeIcon icon={faStopwatch} />
+        <span className="text-lg text-white font-bold bg-purple-500 px-9 py-2 rounded-full">
+          <FontAwesomeIcon icon={faStopwatch} className="mr-1" />
           {minutes === 0 ? "" : minutes + " min"}{" "}
           {seconds === 0 ? "" : seconds + " s"}
         </span>
@@ -72,7 +72,7 @@ const Switcher = (props: SwitcherType) => {
   };
 
   return (
-    <div className=" flex-grow h-36 relative bg-gradient-to-t from-gray-900 to-gray-800">
+    <div className=" flex-grow h-36 relative dark:bg-gradient-to-t from-gray-900 to-gray-800">
       <AnimatePresence>
         <motion.img
           className="w-full h-full object-contain"
@@ -89,7 +89,7 @@ const Switcher = (props: SwitcherType) => {
       <div className=" w-full flex justify-center mt-5 absolute bottom-5">
         <div className="container mx-auto px-4">
           <div className="bg-white bg-opacity-90 h-36 max-w-lg mx-auto border border-gray-200 rounded-xl w-xl dark:bg-gray-800 dark:border-gray-600 shadow-xl">
-            <div className="bg-dark-darkest border-b border-gray-600 rounded-t-xl h-8 flex justify-center items-center">
+            <div className="bg-white dark:bg-dark-darkest border-b border-gray-200 dark:border-gray-600 rounded-t-xl h-8 flex justify-center items-center">
               <span className="mb-1 dark:text-white text-xs">
                 <strong className="text-purple-500">{currentIndex}</strong> /{" "}
                 {state.length}

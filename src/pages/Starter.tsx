@@ -10,9 +10,7 @@ import { faFan } from "@fortawesome/free-solid-svg-icons";
 
 import { motion } from "framer-motion";
 
-interface Props {}
-
-const Starter = (props: Props) => {
+const Starter = () => {
   let { query, duration }: any = useParams();
 
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,7 +42,7 @@ const Starter = (props: Props) => {
     return <div>Erreur : {error.message}</div>;
   } else if (!isLoaded) {
     return (
-      <div className="flex flex-col h-screen bg-gray-800">
+      <div className="flex flex-col h-screen dark:bg-gray-800">
         <Header query={query} />
         <div className="flex flex-col justify-center items-center flex-grow">
           <motion.div

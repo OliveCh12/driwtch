@@ -26,7 +26,7 @@ const Home = () => {
         <motion.h1
           initial={{ y: 100, scale: 3, opacity: 0 }}
           animate={{ y: 0, scale: 1, opacity: 1 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5, type: "spring" }}
           className="font-cursive text-6xl text-primary-500"
         >
           Driwtch
