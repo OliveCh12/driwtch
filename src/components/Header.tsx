@@ -11,7 +11,7 @@ const Header = (props: Props) => {
       <div className="container m-auto px-5 h-full">
         <nav className="flex items-center justify-between px-2 py-3 navbar-expand-lg h-full">
           <div>
-            <Link to="/" className="text-xl font-cursive text-purple-500 ">
+            <Link to="/" className="text-xl font-cursive text-indigo-500 ">
               Driwtch
             </Link>
           </div>

@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import Search from "../components/Search";
+
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -21,13 +23,12 @@ const Home = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-800  h-full flex flex-col justify-center items-center">
       <Header />
-
       <div className="container m-auto px-5 mt-5 h-full flex flex-col justify-center items-center">
         <motion.h1
           initial={{ y: 100, scale: 3, opacity: 0 }}
           animate={{ y: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, type: "spring" }}
-          className="font-cursive text-6xl text-primary-500"
+          className="font-cursive text-6xl text-indigo-500"
         >
           Driwtch
         </motion.h1>
@@ -64,7 +65,7 @@ const Home = () => {
 
         <Link
           type="submit"
-          className="border border-purple-600 text-white px-10 py-3 rounded-lg bg-purple-500 hover:bg-purple-600 focus:bg-purple-700 shadow-xl mt-5"
+          className="border border-indigo-600 text-white px-10 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-700 shadow-xl mt-5"
           to={`/${state.query}/${state.interval}`}
         >
           Start session

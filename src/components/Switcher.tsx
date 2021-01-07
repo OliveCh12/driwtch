@@ -54,7 +54,7 @@ const Switcher = (props: SwitcherType) => {
       return "Next";
     } else {
       return (
-        <span className="text-lg text-white font-bold bg-purple-500 px-9 py-2 rounded-full">
+        <span className="text-lg text-white font-bold bg-indigo-500 px-9 py-2 rounded-full">
           <FontAwesomeIcon icon={faStopwatch} className="mr-1" />
           {minutes === 0 ? "" : minutes + " min"}{" "}
           {seconds === 0 ? "" : seconds + " s"}
@@ -91,7 +91,7 @@ const Switcher = (props: SwitcherType) => {
           <div className="bg-white bg-opacity-90 h-36 max-w-lg mx-auto border border-gray-200 rounded-xl w-xl dark:bg-gray-800 dark:border-gray-600 shadow-xl">
             <div className="bg-white dark:bg-dark-darkest border-b border-gray-200 dark:border-gray-600 rounded-t-xl h-8 flex justify-center items-center">
               <span className="mb-1 dark:text-white text-xs">
-                <strong className="text-purple-500">{currentIndex}</strong> /{" "}
+                <strong className="text-indigo-500">{currentIndex}</strong> /{" "}
                 {state.length}
               </span>
             </div>

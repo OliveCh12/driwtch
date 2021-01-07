@@ -53,15 +53,15 @@ const Starter = () => {
             transition={{ repeat: Infinity, duration: 2 }}
           >
             <FontAwesomeIcon
-              className="text-purple-500"
+              className="text-indigo-500"
               icon={faFan}
-              size="5x"
+              size="4x"
             />
           </motion.div>
 
           <span className="text-center text-xl font-bold dark:text-white mt-8">
             Un moment s'il te plait, je recherche des images de : <br />
-            <strong className="text-purple-600 mt-5">« {query} »</strong>
+            <strong className="text-indigo-500 mt-5">« {query} »</strong>
           </span>
         </div>
         <Footer />
