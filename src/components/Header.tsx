@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
 interface Props {
   query?: string;
 }
@@ -27,7 +30,10 @@ const Header = (props: Props) => {
           )}
 
           <div className="flex justify-between dark:text-white">
-            <Link to="/">GitHub</Link>
+            <a href="https://github.com/OliveCh12/driwtch" target="_blank">
+              <FontAwesomeIcon className="mr-2" icon={faGithub} />
+              GitHub
+            </a>
           </div>
         </nav>
       </div>

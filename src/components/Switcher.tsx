@@ -72,49 +72,47 @@ const Switcher = (props: SwitcherType) => {
   };
 
   return (
-    <div className=" flex-grow h-36 relative dark:bg-gradient-to-t from-gray-900 to-gray-800">
+    <div className=" flex-grow h-3 dark:bg-gradient-to-t from-gray-900 to-gray-800">
       <AnimatePresence>
         <motion.img
-          className="w-full h-full object-contain"
+          className="w-full h-4/5	object-contain dark:bg-gray-800 overflow-hidden"
           key={state[currentIndex]}
           src={state[currentIndex]}
           alt="Sketch image"
-          initial={{ opacity: 0, x: 300, overflow: "hidden" }}
-          animate={{ opacity: 1, x: 0, overflow: "hidden" }}
-          exit={{ opacity: 0, x: -300, overflow: "hidden" }}
+          initial={{ opacity: 0, filter: "blur(50px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(50px)" }}
           transition={{ type: "tween" }}
         />
       </AnimatePresence>
 
-      <div className=" w-full flex justify-center mt-5 absolute bottom-5">
-        <div className="container mx-auto px-4">
-          <div className="bg-white bg-opacity-90 h-36 max-w-lg mx-auto border border-gray-200 rounded-xl w-xl dark:bg-gray-800 dark:border-gray-600 shadow-xl">
-            <div className="bg-white dark:bg-dark-darkest border-b border-gray-200 dark:border-gray-600 rounded-t-xl h-8 flex justify-center items-center">
-              <span className="mb-1 dark:text-white text-xs">
-                <strong className="text-indigo-500">{currentIndex}</strong> /{" "}
-                {state.length}
-              </span>
+      <div className="h-1/5 py-3">
+        <div className="bg-white bg-opacity-90 h-full max-w-lg mx-auto border border-gray-200 rounded-xl w-xl dark:bg-gray-800 dark:border-gray-600 shadow-xl box-border flex flex-col">
+          <div className="bg-white dark:bg-dark-darkest border-b border-gray-200 dark:border-gray-600 rounded-t-xl h-8 flex justify-center items-center">
+            <span className="mb-1 dark:text-white text-xs">
+              <strong className="text-indigo-500">{currentIndex}</strong> /{" "}
+              {state.length}
+            </span>
+          </div>
+          <Countdown
+            date={Date.now() + props.duration}
+            renderer={progress}
+            autoStart={true}
+          />
+          <div className="flex justify-between h-auto items-center p-5 flex-grow  box-content rounded-xl">
+            <Button onClick={handlePrevious}>
+              <FontAwesomeIcon icon={faArrowCircleLeft} />
+            </Button>
+            <div className="flex flex-col items-center">
+              <Countdown
+                date={Date.now() + props.duration}
+                renderer={renderer}
+                autoStart={true}
+              />
             </div>
-            <div className="flex justify-between  items-center p-5 ">
-              <Button onClick={handlePrevious}>
-                <FontAwesomeIcon icon={faArrowCircleLeft} />
-              </Button>
-              <div className="flex flex-col items-center">
-                <Countdown
-                  date={Date.now() + props.duration}
-                  renderer={renderer}
-                  autoStart={true}
-                />
-              </div>
-              <Button onClick={handleNext}>
-                <FontAwesomeIcon icon={faArrowCircleRight} />
-              </Button>
-            </div>
-            <Countdown
-              date={Date.now() + props.duration}
-              renderer={progress}
-              autoStart={true}
-            />
+            <Button onClick={handleNext}>
+              <FontAwesomeIcon icon={faArrowCircleRight} />
+            </Button>
           </div>
         </div>
       </div>

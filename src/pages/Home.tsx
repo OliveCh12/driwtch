@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import Card from "../components/Card";
 import Search from "../components/Search";
 
 import { motion } from "framer-motion";
 
 const Home = () => {
+  // Default State
   const [state, setState] = useState({
     query: "",
     interval: 30000,
@@ -35,9 +37,9 @@ const Home = () => {
         <p className="dark:text-gray-300 text-xl text-gray-500 mb-5">
           Sketch as fast as you can...
         </p>
-        <div className="flex">
+        <div className="grid grid-cols-3 gap-3">
           <input
-            className="bg-white dark:bg-gray-700 dark:text-white shadow rounded border-0 p-3"
+            className="col-span-2 bg-white dark:bg-gray-700 dark:text-white shadow-lg rounded border border-gray-300 dark:border-gray-600 p-3 focus:border focus:border-indigo-500 focus:outline-none"
             type="text"
             name="query"
             value={state.query}
@@ -46,10 +48,11 @@ const Home = () => {
             autoComplete="off"
           />
           <select
-            className="bg-white dark:bg-gray-700 dark:text-white shadow rounded p-3 ml-3"
+            className="bg-white dark:bg-gray-700 dark:text-white shadow-lg rounded border border-gray-300 dark:border-gray-600 p-3 focus:border focus:border-indigo-500 focus:outline-none"
             name="interval"
             value={state.interval}
             onChange={handleInputChange}
+            defaultValue={30000}
           >
             <option value={30000}>30 seconds</option>
             <option value={60000}>1 minute</option>
@@ -66,11 +69,29 @@ const Home = () => {
 
         <Link
           type="submit"
-          className="border border-indigo-600 text-white px-10 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-700 shadow-xl mt-5"
+          className=" border border-indigo-600 text-white px-10 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-600 focus:bg-indigo-700 shadow-xl my-5 transform focus:scale-90 transition ease-in-out duration-300"
           to={`/${state.query}/${state.interval}`}
         >
           Start session
         </Link>
+
+        <Card title="Comment utiliser driwtch ?">
+          <p className="text-gray-700 dark:text-gray-100 mb-3">
+            Driwtch est un site destiné aux dessinateurs qui veulent dessiner ce
+            qu'ils veulent dans un temps chronométré.
+          </p>
+          <ul className="list-inside list-disc text-gray-500 mb-3">
+            <li>
+              Enrichissez votre librairie visuelle sur n'importe quel sujet.
+            </li>
+            <li>Parfait pour s'échauffer avant une journée de dessin.</li>
+            <li>Améliorez votre gesture sur le thème qui vous inspire.</li>
+          </ul>
+          <p className="text-gray-700 dark:text-gray-100 mb-3">
+            Entrez simplement dans le champ de recherche ce que vous désirez
+            dessiner puis choisissez l'intervalle de temps entre chaque image.
+          </p>
+        </Card>
       </div>
       <Footer />
     </div>
