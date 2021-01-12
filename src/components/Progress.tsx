@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   current: number;
@@ -6,11 +7,12 @@ interface Props {
 
 const Progress = (props: Props) => {
   return (
-    <div className="bg-gray-200 rounded-full">
-      <div
-        style={{ width: `${props.current}%` }}
-        className="bg-red-500 h-1 rounded-full transition duration-500 ease-in-out"
-      ></div>
+    <div className="bg-gray-200 dark:bg-gray-700 rounded-full">
+      <motion.div
+        animate={{ width: `${props.current}%` }}
+        transition={{ type: "tween" }}
+        className="transition duration-500 ease-in-out bg-gradient-to-r from-indigo-400  to-indigo-600 h-1 rounded-full"
+      ></motion.div>
     </div>
   );
 };
